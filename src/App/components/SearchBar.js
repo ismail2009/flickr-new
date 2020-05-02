@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function SearchBar() {
+function SearchBar({ text, onChangeText }) {
     const classes = useStyles();
 
     return (
@@ -36,8 +36,11 @@ function SearchBar() {
         <Divider className={ classes.divider } orientation="vertical"/>
         <InputBase
             className={ classes.input }
-            placeholder="Search Google Maps"
+            placeholder="Search in Flickr"
             inputProps={ {'aria-label': 'search google maps'} }
+            name='search'
+            value={text}
+            onChange={onChangeText}
         />
     </Paper>
 )}

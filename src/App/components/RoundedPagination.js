@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
 export default function UsePagination(props) {
     const classes = useStyles();
     const { items } = usePagination(props);
-    console.log('items', items);
     return (
         <nav>
             <ul className={classes.ul}>

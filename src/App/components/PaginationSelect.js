@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React  from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -16,25 +16,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PaginationSelect({
-   rowsPerPageOptions, onChangeItemsPerPage, childState }) {
-    const [value, setNumberOfItemsPerPage] = React.useState(rowsPerPageOptions[0]);
+ selectOptions, onChangeItemsPerPage, value, name }) {
 
     const classes = useStyles();
-    const handleChange = (ev) => {
-        setNumberOfItemsPerPage(ev.target.value);
-    };
-    onChangeItemsPerPage(value)
     return (
         <div>
             <FormControl className={classes.formControl}>
                 <Select
                     value={value}
-                    onChange={handleChange}
+                    onChange={onChangeItemsPerPage}
                     displayEmpty
+                    name={name}
                     inputProps={{ 'aria-label': 'Without label', classes: { root: classes.inputBase } }}
 
                 >
-                    {rowsPerPageOptions.map(item => ( <MenuItem key={`select-${item}`} value={item} value={item}>{`${item} Per Page`}</MenuItem>))}
+                    {selectOptions.map(item => ( <MenuItem key={`select-${item}`} value={item}>{`${item} Per Page`}</MenuItem>))}
                 </Select>
             </FormControl>
         </div>
